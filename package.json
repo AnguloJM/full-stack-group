@@ -1,0 +1,20 @@
+{
+  "name": "full-stack-group",
+  "version": "1.0.0",
+  "description": "Group collaborative practice assignment with Jairo and James.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aawferris/full-stack-group.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aawferris/full-stack-group/issues"
+  },
+  "homepage": "https://github.com/aawferris/full-stack-group#readme"
+}
