@@ -8,18 +8,19 @@ const PostCreate = (props) => {
 
     const [post, setPost] = useState({
             title: '',
-            imageURL: '',
+            imgURL: '',
             content: ''
         })
 
     const [isCreated, setCreated] = useState(false)
 
     const handleChange = (event) => {
-        const { title, value } = event.target
+        const { name, value } = event.target
         setPost({
                 ...post,
-                [title]: value
+                [name]: value
         })
+      console.log(event.target);
     }
 
     const handleSubmit = async (event) => {
@@ -47,7 +48,7 @@ const PostCreate = (props) => {
                     className="textarea-content"
                     rows={10}
                     placeholder='Content'
-                    value={post.title}
+                    value={post.content}
                     name='content'
                     required
                     onChange={handleChange}
@@ -56,7 +57,7 @@ const PostCreate = (props) => {
                     className="input-image-link"
                     placeholder='Image Link'
                     value={post.imgURL}
-                    name='imageURL'
+                    name='imgURL'
                     required
                     onChange={handleChange}
                 />
