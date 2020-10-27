@@ -1,6 +1,6 @@
-import React from 'react';
-import './PostCard.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./PostCard.css";
+import { Link } from "react-router-dom";
 
 const PostCard = (props) => {
   return (
@@ -11,6 +11,6 @@ const PostCard = (props) => {
       </Link>
     </div>
   );
-}
+};
 
 export default PostCard;

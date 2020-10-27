@@ -1,6 +1,6 @@
-import React from 'react';
-import './Post.css';
-import { Link } from 'react-router-dom'
+import React from "react";
+import "./Post.css";
+import { Link } from "react-router-dom";
 
 const Post = (props) => {
   return (
@@ -11,6 +11,6 @@ const Post = (props) => {
         <div className="post-content">{props.content}</div>
       </Link>
     </>
-  )
-}
+  );
+};
 export default Post;
