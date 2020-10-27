@@ -8,7 +8,7 @@ const PostEdit = (props) => {
 
     const [post, setPost] = useState({
             title: '',
-            imageURL: '',
+            imgURL: '',
             content: ''
     })
 
@@ -51,6 +51,7 @@ const PostEdit = (props) => {
                     <form onSubmit={handleSubmit}>
                         <input
                             className="edit-input-image-link"
+                            type="text"
                             placeholder='Image Link'
                             value={post.imgURL}
                             name='imgURL'
@@ -61,7 +62,8 @@ const PostEdit = (props) => {
                 </div>
                 <form className="edit-form" onSubmit={handleSubmit}>
                     <input
-                        className="input-title"
+              className="input-title"
+                        type="text"
                         placeholder='Title'
                         value={post.title}
                         name='title'
@@ -71,6 +73,7 @@ const PostEdit = (props) => {
                     />
                     <textarea
                         className="textarea-content"
+                        type="textarea"
                         rows={10}
                         cols={78}
                         placeholder='Content'
