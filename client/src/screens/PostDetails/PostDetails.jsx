@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {useParams, Link} from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom';
+import Layout from '../../components/shared/Layout/Layout';
+import {getPost, deletePost} from '../../services/posts'
 import './PostDetails.css'
 
 function PostDetails(props) {   

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './PostEdit.css'
 import { useParams, Redirect } from 'react-router-dom'
 import Layout from '../../components/shared/Layout/Layout'
-import { getPost, updatePost } from '../../services/post'
+import { getPost, updatePost } from '../../services/posts'
 
 const PostEdit = (props) => {
 
