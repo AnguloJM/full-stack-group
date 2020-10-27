@@ -38,4 +38,4 @@ function PostDetails(props) {
   )
 }
 
-return 
+export default PostDetails;
