@@ -6,87 +6,87 @@ import { getPost, updatePost } from '../../services/posts'
 
 const PostEdit = (props) => {
 
-    const [post, setPost] = useState({
-            title: '',
-            imgURL: '',
-            content: ''
+  const [post, setPost] = useState({
+    title: '',
+    imgURL: '',
+    content: ''
+  })
+
+  const [isUpdated, setUpdated] = useState(false)
+  let { id } = useParams()
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const post = await getPost(id)
+      setPost(post)
+    }
+    fetchPost()
+  }, [id])
+
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setPost({
+      ...post,
+      [name]: value
     })
+  }
 
-    const [isUpdated, setUpdated] = useState(false)
-    let { id } = useParams()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    let { id } = props.match.params
+    const updated = await updatePost(id, post)
+    setUpdated(updated)
+  }
 
-    useEffect(() => {
-        const fetchPost = async () => {
-            const post = await getPost(id)
-            setPost(post)
-        }
-        fetchPost()
-    }, [id])
+  if (isUpdated) {
+    return <Redirect to={`/posts/${props.match.params.id}`} />
+  }
 
-
-    const handleChange = (event) => {
-        const { name, value } = event.target
-        setPost({
-                ...post,
-                [name]: value
-        })
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        let { id } = props.match.params
-        const updated = await updatePost(id, post)
-        setUpdated(updated)
-    }
-
-    if (isUpdated) {
-        return <Redirect to={`/posts/${props.match.params.id}`} />
-    }
-
-    return (
-        <Layout> {/*user={props.user}*/}
-            <div className="post-edit">
-                <div className="image-container">
-                    <img className="edit-post-image" src={post.imgURL} alt={post.title} />
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            className="edit-input-image-link"
-                            type="text"
-                            placeholder='Image Link'
-                            value={post.imgURL}
-                            name='imgURL'
-                            required
-                            onChange={handleChange}
-                        />
-                    </form>
-                </div>
-                <form className="edit-form" onSubmit={handleSubmit}>
-                    <input
-              className="input-title"
-                        type="text"
-                        placeholder='Title'
-                        value={post.title}
-                        name='title'
-                        required
-                        autoFocus
-                        onChange={handleChange}
-                    />
-                    <textarea
-                        className="textarea-content"
-                        type="textarea"
-                        rows={10}
-                        cols={78}
-                        placeholder='Content'
-                        value={post.content}
-                        name='content'
-                        required
-                        onChange={handleChange}
-                    />
-                    <button type='submit' className="save-button">Save</button>
-                </form>
-            </div>
-        </Layout>
-    )
+  return (
+    <Layout> {/*user={props.user}*/}
+      <div className="post-edit">
+        <div className="image-container">
+          <img className="edit-post-image" src={post.imgURL} alt={post.title} />
+          <form onSubmit={handleSubmit}>
+            <input
+              className="edit-input-image-link"
+              type="text"
+              placeholder='Image Link'
+              value={post.imgURL}
+              name='imgURL'
+              required
+              onChange={handleChange}
+            />
+          </form>
+        </div>
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <input
+            className="input-title"
+            type="text"
+            placeholder='Title'
+            value={post.title}
+            name='title'
+            required
+            autoFocus
+            onChange={handleChange}
+          />
+          <textarea
+            className="textarea-content"
+            type="textarea"
+            rows={10}
+            cols={78}
+            placeholder='Content'
+            value={post.content}
+            name='content'
+            required
+            onChange={handleChange}
+          />
+          <button type='submit' className="save-button">Save</button>
+        </form>
+      </div>
+    </Layout>
+  )
 }
 
 export default PostEdit
